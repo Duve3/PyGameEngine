@@ -1,0 +1,36 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pygameengine"
+dynamic = ["version"]
+description = ''
+readme = "README.md"
+requires-python = ">=3.7"
+license = "MIT"
+keywords = []
+authors = [
+  { name = "Duve3", email = "Duv3tabest@gmail.com" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = ["pygame-ce"]
+
+[project.urls]
+Documentation = "https://github.com/Duve3/PyGameEngine#readme"
+Issues = "https://github.com/Duve3/PyGameEngine/issues"
+Source = "https://github.com/Duve3/PyGameEngine"
+
+[tool.hatch.version]
+path = "src/pygameengine/__about__.py"
+
+[[tool.hatch.envs.all.matrix]]
+python = ["3.9", "3.10", "3.11"]
