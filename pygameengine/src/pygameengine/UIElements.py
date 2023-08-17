@@ -1,9 +1,5 @@
 """
 All the UIElements that can be used in ge
 """
-import pygame
-
-
-class InputType:
-    def __init__(self):
-        pass # TODO: add this
+# Use pygame-widgets to combine all needed UI features here.
+import pygame_widgets as pw
