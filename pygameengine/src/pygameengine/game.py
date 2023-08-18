@@ -1,5 +1,5 @@
 """
-Contains everything related to the actual game loop
+Contains everything related to the actual game in pge
 """
 import pygame
 from pygame import Vector2

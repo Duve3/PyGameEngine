@@ -1,5 +1,5 @@
 """
-Contains everything related to fonts in the GE
+Contains everything related to fonts in the pge
 """
 import pygame.freetype
 from pygame import Surface, Color, Vector2
