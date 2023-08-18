@@ -6,8 +6,8 @@ build-backend = "hatchling.build"
 name = "pygameengine"
 dynamic = ["version"]
 description = ''
-readme = "README.md"
-requires-python = ">=3.7"
+readme = "../README.md"
+requires-python = ">=3.9"
 license = "MIT"
 keywords = []
 authors = [

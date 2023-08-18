@@ -1,5 +1,5 @@
 """
-All stuff related to creating menus using pge
+Contains everything related to creating menus using pge
 """
 import pygame
 from pygame import Surface

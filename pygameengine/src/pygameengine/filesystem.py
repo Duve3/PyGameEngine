@@ -1,5 +1,5 @@
 """
-All stuff related to using the filesystem in pge
+Contains everything related to using the filesystem in pge
 """
 import tkinter.filedialog
 

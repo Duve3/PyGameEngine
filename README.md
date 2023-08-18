@@ -8,6 +8,7 @@
 **Table of Contents**
 
 - [Installation](#installation)
+- [Documentation](#documentation)
 - [License](#license)
 
 ## Installation
@@ -15,6 +16,10 @@
 ```console
 pip install pygameengine
 ```
+
+## Documentation
+
+Currently there is no documentation for PyGameEngine just go through the source code lol
 
 ## License
 
