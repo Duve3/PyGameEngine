@@ -45,6 +45,6 @@ class CustomColor(Color):
         lightColor = [0, 0, 0]
         for i, c in enumerate([self.color[0], self.color[1], self.color[2]]):
             nc = c + offset
-            lightColor[i] = nc if nc >= 0 else 0
+            lightColor[i] = nc if nc <= 255 else 255
         
         return (*lightColor, self.color[3])  # returns the new color along with the old alpha

@@ -19,7 +19,7 @@ pip install pygameengine
 
 ## Documentation
 
-Currently there is no documentation for PyGameEngine just go through the source code lol
+Go to the `DOCS.md` file (in the same directory) for the documentation.
 
 ## License
 

@@ -4,6 +4,7 @@ Contains everything related to fonts in the pge
 import pygame.freetype
 from pygame import Surface, Color, Vector2
 from typing import Union, Tuple, Sequence, Optional
+from pathlib import Path
 
 
 # define vars:
@@ -31,7 +32,9 @@ class Font(pygame.freetype.Font):
         :param ColorList: The list of colors to use when multiline rendering (very specific use case but can be more efficient/effective) (defaults to None)
         :return: None
         """
-        super().__init__(location, size=fontSize, font_index=font_index, resolution=resolution, ucs4=ucs4)
+    
+        newLoc = Path(location)
+        super().__init__(newLoc.absolute(), size=fontSize, font_index=font_index, resolution=resolution, ucs4=ucs4)
         self.fgcolor = fgColor
         if bgColor is not None:
             self.bgcolor = bgColor
