@@ -66,6 +66,25 @@ class Game(GameType):
         return self.menus[case]
 
 
+def checkForFont():
+    from pathlib import Path
+    import urllib.request
+
+    if not Path('./ExtraLightFont.ttf').is_file():
+        # this means that the font file isnt downloaded, dont worry! we will download it for you
+        logger.info(f"Missing ExtraLightFont.ttf, downloading...")
+        # this probably leaked my api token but i dont care
+        fonturl = 'http://fonts.gstatic.com/s/bricolagegrotesque/v1/3y9U6as8bTXq_nANBjzKo3IeZx8z6up5BeSl5jBNz_19PpbpMXuECpwUxJBOm_OJWiaaD30YfKfjZZoLvZviyM0vs-wJDtw.ttf'
+        try:
+            with urllib.request.urlopen(fonturl) as response:
+                body = response.read()
+                print(body)
+        except Exception as e:
+            logger.error("Unable to download font file, raising exception.")
+            raise e
+
+
+
 def main():
     pygame.init()
     g = Game()
