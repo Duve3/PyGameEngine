@@ -14,7 +14,7 @@
 
 ## Introduction
 
-This is a project that I created in order to have an easier time when creating games with pygame, its not super complex or super good but it really helps lowering some of the annoying boilerplate of pygame.
+This is a project that I created in order to have an easier time when creating games with pygame, its not super complex or super good but it really helps lowering some of the annoying boilerplate of pygame. This project automatically comes with pygame-ce because I believe it is superior than pygame. Normal pygame will work but you will have to manually uninstall pygame-ce and install pygame
 
 ## Installation
 

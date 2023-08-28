@@ -5,11 +5,11 @@ build-backend = "hatchling.build"
 [project]
 name = "pygame_wrapper"
 dynamic = ["version"]
-description = ''
+description = 'A simple wrapper around pygame'
 readme = "../README.md"
 requires-python = ">=3.9"
 license = "MIT"
-keywords = []
+keywords = ['pygame', 'wrapper']
 authors = [
   { name = "Duve3", email = "Duv3tabest@gmail.com" },
 ]
@@ -25,9 +25,9 @@ classifiers = [
 dependencies = ["pygame-ce"]
 
 [project.urls]
-Documentation = "https://github.com/Duve3/PyGameEngine#readme"
-Issues = "https://github.com/Duve3/PyGameEngine/issues"
-Source = "https://github.com/Duve3/PyGameEngine"
+Documentation = "https://github.com/Duve3/Pygame-wrapper#readme"
+Issues = "https://github.com/Duve3/Pygame-wrapper/issues"
+Source = "https://github.com/Duve3/Pygame-wrapper"
 
 [tool.hatch.version]
 path = "src/pygameengine/__about__.py"
