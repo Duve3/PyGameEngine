@@ -1,9 +1,11 @@
 """
-Used for testing: game.py, menu.py, fonts.py, and color.py
+Used for testing: game.py, menu.py, fonts.py, logging.py, and color.py
+also btw I do more testing than this, its just that most of them wont work on other systems unlike this one.
+(I do not test filesystem.py, use at your own risk.)
 """
 from pygameengine import GameType, MenuType, CustomColor, Font
 from pygameengine.logging import setupLogging
-from logging import INFO
+from logging import INFO, DEBUG
 import pygame
 
 logger = setupLogging("main", level=INFO)
@@ -38,7 +40,7 @@ class Game(GameType):
     def __init__(self):
         super().__init__("Testing Application", (1080, 720))
         self.c = CustomColor((255, 0, 0))
-        self.font = Font("./PyGameEngine/pygameengine/src/ExtraLightFont.ttf", 40, CustomColor((50, 150, 25)))
+        self.font = Font("./ExtraLightFont.ttf", 40, CustomColor((50, 150, 25)))
         self.menus = [MainMenu(self.screen, self.fpsClock, self.font)]
     
     def logic(self):
@@ -78,7 +80,8 @@ def checkForFont():
         try:
             with urllib.request.urlopen(fonturl) as response:
                 body = response.read()
-                print(body)
+                with open(Path('./ExtraLightFont.ttf'), 'wb') as ff:
+                    ff.write(body)
         except Exception as e:
             logger.error("Unable to download font file, raising exception.")
             raise e
@@ -86,9 +89,15 @@ def checkForFont():
 
 
 def main():
+    checkForFont()
     pygame.init()
     g = Game()
     g.run()
 
 if __name__ == "__main__":
     main()
+    logger.debug("LEVEL TESTING")
+    logger.info("Yeah im testing levels")
+    logger.warning("This is a warning bro")
+    logger.error("We gonna have an error")
+    logger.critical("We are going critical")

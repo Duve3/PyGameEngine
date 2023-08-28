@@ -2,6 +2,41 @@
 Contains everything related to logging in pge
 """
 import logging
+    
+
+class ColoredFormatter(logging.Formatter):
+    def __init__(self, msg: str, datefmt: str = None, use_color: bool = True):
+        if datefmt is not None:
+            super().__init__(msg, datefmt)
+        else:
+            super().__init__(msg)
+        
+        self.use_color = use_color
+        RESET_SEQ = "\033[0m"
+        COLOR_SEQ = "\033[38;5;%dm"
+        BOLD_SEQ = "\033[1;38;5;%dm"
+        # colors
+        RED = 196
+        GREEN = 190
+        YELLOW = 220
+        BLUE = 21
+        MAGENTA = 201
+        CYAN = 33
+        WHITE = 231
+
+        # formats
+        self.FORMATS = {
+            logging.DEBUG: (COLOR_SEQ % ( BLUE)) + msg + RESET_SEQ,
+            logging.INFO: (COLOR_SEQ % (WHITE)) + msg + RESET_SEQ,
+            logging.WARNING: (COLOR_SEQ % (YELLOW)) + msg + RESET_SEQ,
+            logging.ERROR: (COLOR_SEQ % (RED)) + msg + RESET_SEQ,
+            logging.CRITICAL: (BOLD_SEQ % (RED)) + msg + RESET_SEQ
+        }
+    
+    def format(self, record):
+        log_fmt = self.FORMATS.get(record.levelno)
+        formatter = logging.Formatter(log_fmt, self.datefmt)
+        return formatter.format(record)
 
 
 def setupLogging(LoggerName: str, level: int = 10, FileHandler: logging.FileHandler = None, ConsoleHandler: logging.StreamHandler = None) -> logging.Logger:
@@ -18,6 +53,11 @@ def setupLogging(LoggerName: str, level: int = 10, FileHandler: logging.FileHand
         "%(levelname)s (%(asctime)s) - %(name)s: %(message)s (Line: %(lineno)d [%(filename)s])",
         "%m/%d %H:%M:%S"
     )
+    logFormatterColored = ColoredFormatter(
+        "%(levelname)s (%(asctime)s) - %(name)s: %(message)s (Line: %(lineno)d [%(filename)s])",
+        "%m/%d %H:%M:%S",
+        use_color=True
+    )
 
     if FileHandler is None:
         fileHandler = logging.FileHandler(
@@ -31,7 +71,7 @@ def setupLogging(LoggerName: str, level: int = 10, FileHandler: logging.FileHand
         consoleHandler = logging.StreamHandler()
     else:
         consoleHandler = ConsoleHandler
-    consoleHandler.setFormatter(logFormatter)
+    consoleHandler.setFormatter(logFormatterColored)
 
     logger.level = level
     logger.addHandler(fileHandler)
