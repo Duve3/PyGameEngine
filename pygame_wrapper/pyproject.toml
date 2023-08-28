@@ -30,7 +30,7 @@ Issues = "https://github.com/Duve3/Pygame-wrapper/issues"
 Source = "https://github.com/Duve3/Pygame-wrapper"
 
 [tool.hatch.version]
-path = "src/pygameengine/__about__.py"
+path = "src/pygame_wrapper/__about__.py"
 
 [[tool.hatch.envs.all.matrix]]
 python = ["3.9", "3.10", "3.11"]
