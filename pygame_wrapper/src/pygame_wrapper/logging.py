@@ -36,7 +36,10 @@ class ColoredFormatter(logging.Formatter):
     def format(self, record):
         log_fmt = self.FORMATS.get(record.levelno)
         formatter = logging.Formatter(log_fmt, self.datefmt)
-        return formatter.format(record)
+        d = formatter.format(record)
+        # %(levelname)s (%(asctime)s) - %(name)s: %(message)s (Line: %(lineno)d [%(filename)s])
+        # 'CRITICAL' '08/27 22:03:34' - 'main': 'We are going critical' (Line: '103' ['test.py'])
+        return d
 
 
 def setupLogging(LoggerName: str, level: int = 10, FileHandler: logging.FileHandler = None, ConsoleHandler: logging.StreamHandler = None) -> logging.Logger:
@@ -50,11 +53,11 @@ def setupLogging(LoggerName: str, level: int = 10, FileHandler: logging.FileHand
     """
     logger: logging.Logger = logging.getLogger(LoggerName)
     logFormatter = logging.Formatter(
-        "%(levelname)s (%(asctime)s) - %(name)s: %(message)s (Line: %(lineno)d [%(filename)s])",
+        "%(levelname)8s (%(asctime)s) - %(name)s: %(message)s (Line: %(lineno)d [%(filename)s])",
         "%m/%d %H:%M:%S"
     )
     logFormatterColored = ColoredFormatter(
-        "%(levelname)s (%(asctime)s) - %(name)s: %(message)s (Line: %(lineno)d [%(filename)s])",
+        "%(levelname)8s (%(asctime)s) - %(name)s: %(message)s (Line: %(lineno)d [%(filename)s])",
         "%m/%d %H:%M:%S",
         use_color=True
     )
