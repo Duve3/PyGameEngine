@@ -1,5 +1,5 @@
 """
-Contains everything related to logging in pge
+Contains everything related to logging in pgw
 """
 import logging
     

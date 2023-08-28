@@ -3,8 +3,8 @@ Used for testing: game.py, menu.py, fonts.py, logging.py, and color.py
 also btw I do more testing than this, its just that most of them wont work on other systems unlike this one.
 (I do not test filesystem.py, use at your own risk.)
 """
-from pygameengine import GameType, MenuType, CustomColor, Font
-from pygameengine.logging import setupLogging
+from pygame_wrapper import GameType, MenuType, CustomColor, Font
+from pygame_wrapper.logging import setupLogging
 from logging import INFO, DEBUG
 import pygame
 

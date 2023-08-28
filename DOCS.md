@@ -1,4 +1,4 @@
-# Docs - PyGameEngine
+# Docs - Pygame Wrapper
 
 This file contains all the information for documentation
 
@@ -14,7 +14,7 @@ This documentation is split based on what each file/section does.
 ### Game
 
 Everything related to the `game.py` file.
-Everything in this file is exported and can be accessed with pygameengine.\<object>
+Everything in this file is exported and can be accessed with pygameengine.<\object>
 ```
 class GameType
 

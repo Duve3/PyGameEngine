@@ -1,5 +1,5 @@
 """
-Contains everything related to Colors in pge
+Contains everything related to Colors in pgw
 """
 from pygame import Color
 from typing import Tuple, Union, Sequence

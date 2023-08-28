@@ -1,5 +1,5 @@
 """
-Contains everything related to using the filesystem in pge
+Contains everything related to using the filesystem in pgw
 WARNING: these functions are very buggy when used in MacOS due to some compabiltity issues.
 For the above reason these functions are untested and are used at your own risk.
 """

@@ -1,5 +1,5 @@
 """
-Contains everything related to multiplayer and sockets
+Contains everything related to multiplayer and sockets in pgw
 """
 import socket
 
