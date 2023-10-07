@@ -1,4 +1,4 @@
 # SPDX-FileCopyrightText: 2023-present Duve3 <Duv3tabest@gmail.com>
 #
 # SPDX-License-Identifier: MIT
-__version__ = "0.1.2"
+__version__ = "0.2.0"

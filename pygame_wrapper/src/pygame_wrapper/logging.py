@@ -2,6 +2,7 @@
 Contains everything related to logging in pgw
 """
 import logging
+import os
     
 
 class ColoredFormatter(logging.Formatter):
@@ -61,6 +62,13 @@ def setupLogging(LoggerName: str, level: int = 10, FileHandler: logging.FileHand
         "%m/%d %H:%M:%S",
         use_color=True
     )
+
+    if not os.path.exists("./logs/"):
+        os.mkdir("./logs")
+
+    if not os.path.exists("./logs/console.log"):
+        f = open("./logs/console.log", "x")
+        f.close()
 
     if FileHandler is None:
         fileHandler = logging.FileHandler(

@@ -5,6 +5,7 @@ also btw I do more testing than this, its just that most of them wont work on ot
 """
 from pygame_wrapper import GameType, MenuType, CustomColor, Font
 from pygame_wrapper.logging import setupLogging
+from pygame_wrapper.UI import Checkbox, Button
 from logging import INFO, DEBUG
 import pygame
 
@@ -19,13 +20,13 @@ class MainMenu(MenuType):
 
     def logic(self):
         logger.debug("Menu Logic")
-    
+
     def rendering(self):
         logger.debug("Menu Rendering")
         self.screen.fill(self.c)
         self.font.multiline_render_to(self.screen, (50, 50), "This is the main\nmenu")
         pygame.display.flip()
-    
+
     def run(self):
         while True:
             for event in pygame.event.get():
@@ -42,19 +43,27 @@ class Game(GameType):
         self.c = CustomColor((255, 0, 0))
         self.font = Font("./ExtraLightFont.ttf", 40, CustomColor((50, 150, 25)))
         self.menus = [MainMenu(self.screen, self.fpsClock, self.font)]
-    
+        self.button = Button(300, 300, 200, 50, (150, 150, 150), (100, 100, 100), self.font, "button")
+        self.checkBox = Checkbox(300, 600, 50, 50, (150, 150, 150), (0, 255, 255))
+        self.needsHook = [self.button, self.checkBox]
+
     def logic(self):
         logger.debug("Logic")
-    
+
     def rendering(self):
         logger.debug("Rendering")
         self.screen.fill(self.c)
         self.font.multiline_render_to(self.screen, (100, 100), "This is the game\n thing")
+        self.button.render_to(self.screen)
+        self.checkBox.render_to(self.screen)
         pygame.display.flip()
-        
+
     def run(self):
         while True:
-            for event in pygame.event.get():
+            events = pygame.event.get()
+            for hookable in self.needsHook:
+                hookable.hook_events(events)
+            for event in events:
                 if event.type == pygame.QUIT:
                     return
                 elif event.type == pygame.KEYDOWN:
@@ -87,12 +96,12 @@ def checkForFont():
             raise e
 
 
-
 def main():
     checkForFont()
     pygame.init()
     g = Game()
     g.run()
+
 
 if __name__ == "__main__":
     main()
